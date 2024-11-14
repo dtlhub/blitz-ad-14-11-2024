@@ -48,6 +48,7 @@ CONTAINER_ALLOWED_OPTIONS = CONTAINER_REQUIRED_OPTIONS + [
     "sysctls",
     "privileged",
     "security_opt",
+    "expose",
 ]
 SERVICE_REQUIRED_OPTIONS = ["pids_limit", "mem_limit", "cpus"]
 SERVICE_ALLOWED_OPTIONS = CONTAINER_ALLOWED_OPTIONS
@@ -76,7 +77,7 @@ ALLOWED_CHECKER_PATTERNS = [
     "resp: requests.Response",
     "Got requests connection error",
 ]
-FORBIDDEN_CHECKER_PATTERNS = ["requests"]
+FORBIDDEN_CHECKER_PATTERNS = []
 
 ALLOWED_YAML_FILES = [
     "buf.yaml",

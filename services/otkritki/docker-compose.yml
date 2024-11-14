@@ -1,0 +1,52 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+    depends_on:
+      - backend
+    restart: unless-stopped
+    pids_limit: 256
+    mem_limit: 256M
+    cpus: 0.25
+    ports:
+      - "31338:31338"
+
+  backend:
+    build:
+      context: ./backend
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    pids_limit: 256
+    mem_limit: 256M
+    cpus: 0.25
+    env_file:
+      - .env
+    environment:
+      - PORT=8083
+      - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - DBNAME=${MYSQL_DATABASE}
+    ports:
+      - "8083:8083"
+
+  db:
+    image: mysql
+    restart: unless-stopped
+    pids_limit: 256
+    mem_limit: 1G
+    cpus: 0.5
+    volumes:
+      - ./db/:/var/lib/mysql
+    env_file:
+      - .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    expose:
+      - 3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      interval: 10s
+      retries: 10
