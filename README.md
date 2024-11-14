@@ -8,7 +8,7 @@
 
 | Service                        | Language | Vulns                                                     | Authors                                       |
 | ------------------------------ | -------- | --------------------------------------------------------- | --------------------------------------------- |
-| [bouquets](services/bouquets/) | Python   | Default creds, sql injection, idor, invalid NaN handling  | [@Polina_Demura](https://t.me/@Polina_Demura) |
+| [bouquets](services/bouquets/) | Python   | SQL injection, idor, invalid NaN handling  | [@Polina_Demura](https://t.me/@Polina_Demura) |
 | [otkritki](services/otkritki/) | Go       | Backdoor, insecure login, non-strict username comparision | [@eat_people](https://t.me/eat_people)        |
 
 ## Infrastructure
