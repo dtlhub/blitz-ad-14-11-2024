@@ -587,7 +587,7 @@ def dump_tasks(_args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Validate checkers for A&D. "
-                    "Host & number of runs are passed with HOST and RUNS env vars"
+        "Host & number of runs are passed with HOST and RUNS env vars"
     )
     subparsers = parser.add_subparsers()
 
